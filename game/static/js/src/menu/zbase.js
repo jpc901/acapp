@@ -31,7 +31,8 @@ class AcGameMenu{
     add_listening_events() {
         let outer = this;
         this.$single_mode.click(function(){
-            console.log("单人模式");
+            outer.hide();
+            outer.root.playground.show();
         });
         this.$multi_mode.click(function(){
             console.log("多人模式");

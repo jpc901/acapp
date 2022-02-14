@@ -31,7 +31,8 @@ class AcGameMenu{
     add_listening_events() {
         let outer = this;
         this.$single_mode.click(function(){
-            console.log("单人模式");
+            outer.hide();
+            outer.root.playground.show();
         });
         this.$multi_mode.click(function(){
             console.log("多人模式");
@@ -48,10 +49,36 @@ class AcGameMenu{
         this.$menu.hide();
     }
 }
+class AcGamePlayground {
+    constructor(root){
+        this.root = root;
+        this.$playground = $(`<div>游戏界面</div>`);
+
+        this.hide();
+        this.root.$ac_game.append(this.$playground);
+
+    }
+
+    start(){
+
+    }
+
+    show(){
+        this.$playground.show();
+    }
+    hide(){
+        this.$playground.show();
+    }
+}
 class AcGame{
     constructor(id){
         this.id = id;
         this.$ac_game = $('#' + id);
         this.menu = new AcGameMenu(this);
+        this.playground = new AcGamePlayground(this);
+
+        this.start();
+    }
+    start(){
     }
 }
